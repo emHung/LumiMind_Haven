@@ -28,6 +28,7 @@ http.route({
 						email: result.data.email_addresses[0]?.email_address,
 						name: `${result.data.first_name ?? "Guest"} ${result.data.last_name ?? ""}`,
 						image: result.data.image_url,
+						role: "user",
 					});
 					break;
 				case "user.updated":

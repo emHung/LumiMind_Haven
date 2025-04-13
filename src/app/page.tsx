@@ -1,16 +1,26 @@
-import LeftPanel from "@/components/home/left-panel";
-import RightPanel from "@/components/home/right-panel";
-import { useTheme } from "next-themes";
+import React from 'react';
+import Navbar from '@/components/home/navbar';
+import HeroSection from '@/components/home/hero-section';
+import FeaturesGrid from '@/components/home/features-grid';
+import SolutionsGrid from '@/components/home/solutions-grid';
+import TestimonialsSection from '@/components/home/testimonials-section';
+import ContactSection from '@/components/home/contact-section';
+import Footer from '@/components/home/footer';
 
-export default function Home() {
-	return (
-		<main className='m-5'>
-			<div className='flex overflow-y-hidden h-[calc(100vh-50px)] max-w-[1700px] mx-auto bg-left-panel'>
-				{/* Green background decorator for Light Mode */}
-				<div className='fixed top-0 left-0 w-full h-36 bg-green-primary dark:bg-transparent -z-30' />
-				<LeftPanel />
-				<RightPanel />
-			</div>
-		</main>
-	);
-}
+const HomePage = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <FeaturesGrid />
+        <TestimonialsSection />
+        <SolutionsGrid />
+        <ContactSection />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default HomePage;

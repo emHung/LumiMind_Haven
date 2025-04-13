@@ -60,7 +60,9 @@ export const getMyConversations = query({
 			.withIndex("by_tokenIdentifier", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
 			.unique();
 
-		if (!user) throw new ConvexError("User not found");
+		if (!user) {
+			return [];
+		}
 
 		const conversations = await ctx.db.query("conversations").collect();
 
