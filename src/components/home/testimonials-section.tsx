@@ -64,7 +64,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Second Row - 2 items centered */}
-        <div className="flex justify-center gap-8">
+        <div className="flex flex-col md:flex-row justify-center gap-8">
           {secondRow.map((testimonial) => (
             <div key={testimonial.id} className="flex flex-col items-center">
               <div className="w-[200px] h-[200px] mb-4 relative">
@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
                   priority
                 />
               </div>
-              <h3 className="text-xl font-cormorant-garamond text-gray-900 text-center max-w-[300px]">
+              <h3 className="text-xl font-cormorant-garamond text-gray-900 text-center max-w-[300px] mb-8 md:mb-0">
                 {testimonial.author}
               </h3>
             </div>
