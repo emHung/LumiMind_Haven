@@ -3,6 +3,7 @@ import { useClerk } from "@clerk/nextjs";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { Id } from "../../../convex/_generated/dataModel";
 
 export function getUrlParams(url = window.location.href) {
 	let urlStr = url.split("?")[1];
@@ -11,7 +12,7 @@ export function getUrlParams(url = window.location.href) {
 
 export default function VideoUIKit() {
 	const roomID = getUrlParams().get("roomID") || randomID(5);
-	const conversationId = getUrlParams().get("conversationId");
+	const conversationId = getUrlParams().get("conversationId") as Id<"conversations">;
 	const { user } = useClerk();
 	const sendTextMessage = useMutation(api.messages.sendTextMessage);
 
