@@ -25,7 +25,7 @@ const ContactSection = () => {
                   <div className="ml-3">
                     <p className="text-lg font-cormorant-garamond text-gray-900">Địa chỉ</p>
                     <p className="text-base font-cormorant-garamond text-gray-600">
-                      123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh
+                    36 Tôn Thất Đạm, Phường Nguyễn Thái Bình, Quận 1, Hồ Chí Minh, Việt Nam
                     </p>
                   </div>
                 </div>
@@ -36,7 +36,7 @@ const ContactSection = () => {
                   <div className="ml-3">
                     <p className="text-lg font-cormorant-garamond text-gray-900">Điện thoại</p>
                     <p className="text-base font-cormorant-garamond text-gray-600">
-                      +84 123 456 789
+                    <a href="tel:+8419001234">+84 1900 1234</a>
                     </p>
                   </div>
                 </div>
@@ -47,7 +47,7 @@ const ContactSection = () => {
                   <div className="ml-3">
                     <p className="text-lg font-cormorant-garamond text-gray-900">Email</p>
                     <p className="text-base font-cormorant-garamond text-gray-600">
-                      info@medicalequipment.com
+                    <a href="mailto:support@lumimindhaven.vn">support@lumimindhaven.vn</a>
                     </p>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ const ContactSection = () => {
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full px-4 py-3 text-base font-cormorant-garamond text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="bg-white w-full px-4 py-3 text-base font-cormorant-garamond text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Nhập họ và tên của bạn"
                   />
                 </div>
@@ -75,7 +75,7 @@ const ContactSection = () => {
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-4 py-3 text-base font-cormorant-garamond text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="bg-white w-full px-4 py-3 text-base font-cormorant-garamond text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Nhập địa chỉ email của bạn"
                   />
                 </div>
@@ -87,7 +87,7 @@ const ContactSection = () => {
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-3 text-base font-cormorant-garamond text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="bg-white w-full px-4 py-3 text-base font-cormorant-garamond text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Nhập nội dung tin nhắn của bạn"
                   ></textarea>
                 </div>
