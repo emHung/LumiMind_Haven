@@ -19,50 +19,49 @@ const Footer = () => {
                   sizes="32px"
                 />
               </div>
-              <span className="ml-2 text-3xl font-cormorant-garamond text-white">LumiMind Haven</span>
+              <span className="ml-2 text-xl font-cormorant-garamond text-white">LumiMind Haven</span>
             </Link>
-            <p className="text-white text-xl font-cormorant-garamond text-center">
+            <p className="text-white text-base font-cormorant-garamond text-center">
               Dịch vụ tư vấn sức khỏe tin thần
             </p>
           </div>
           
           <div className="flex flex-col items-center">
-            <h4 className="font-cormorant-garamond text-white mb-4 text-3xl">Dịch Vụ</h4>
+            <h4 className="font-cormorant-garamond text-white mb-4 text-lg">Dịch Vụ</h4>
             <ul className="space-y-2 text-center">
-              <li><Link href="#" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Cá Nhân</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Doanh Nghiệp</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Cá Nhân</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Doanh Nghiệp</Link></li>
             </ul>
           </div>
           
           <div className="flex flex-col items-center">
-            <h4 className="font-cormorant-garamond text-white mb-4 text-3xl">Liên Hệ</h4>
+            <h4 className="font-cormorant-garamond text-white mb-4 text-lg">Liên Hệ</h4>
             <ul className="space-y-2 text-center">
-              <li><Link href="#home" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Trang Chủ</Link></li>
-              <li><Link href="#service" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Dịch Vụ</Link></li>
-              <li><Link href="#team" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Đội Ngũ</Link></li>
-              <li><Link href="#about" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Về Chúng Tôi</Link></li>
-              <li><Link href="#contact" className="text-white hover:text-[#3365b5] text-xl font-cormorant-garamond">Liên Hệ</Link></li>
+              <li><Link href="#home" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Trang Chủ</Link></li>
+              <li><Link href="#service" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Dịch Vụ</Link></li>
+              <li><Link href="#team" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Đội Ngũ</Link></li>
+              <li><Link href="#about" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Về Chúng Tôi</Link></li>
+              <li><Link href="#contact" className="text-white hover:text-[#3365b5] text-base font-cormorant-garamond">Liên Hệ</Link></li>
             </ul>
-          
           </div>
         </div>
         <div className="mt-4 space-y-2">
               <div className="flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-[#3365b5] mr-2" />
-                <span className="text-white text-xl font-cormorant-garamond text-center">36 Tôn Thất Đạm, Phường Nguyễn Thái Bình, Quận 1, Hồ Chí Minh, Việt Nam</span>
+                <MapPin className="w-4 h-4 text-[#3365b5] mr-2" />
+                <span className="text-white text-base font-cormorant-garamond text-center">36 Tôn Thất Đạm, Phường Nguyễn Thái Bình, Quận 1, Hồ Chí Minh, Việt Nam</span>
               </div>
               <div className="flex items-center justify-center">
-                <Phone className="w-5 h-5 text-[#3365b5] mr-2" />
-                <span className="text-white text-xl font-cormorant-garamond text-center"><a href="tel:+8419001234">+84 1900 1234</a></span>
+                <Phone className="w-4 h-4 text-[#3365b5] mr-2" />
+                <span className="text-white text-base font-cormorant-garamond text-center"><a href="tel:+8419001234">+84 1900 1234</a></span>
               </div>
               <div className="flex items-center justify-center">
-                <Mail className="w-5 h-5 text-[#3365b5] mr-2" />
-                <span className="text-white text-xl font-cormorant-garamond text-center"><a href="mailto:support@lumimindhaven.vn">support@lumimindhaven.vn</a></span>
+                <Mail className="w-4 h-4 text-[#3365b5] mr-2" />
+                <span className="text-white text-base font-cormorant-garamond text-center"><a href="mailto:support@lumimindhaven.vn">support@lumimindhaven.vn</a></span>
               </div>
             </div>
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-center items-center">
-            <p className="text-white text-xl text-center font-cormorant-garamond">© 2024 LumiMind Haven. Tất cả quyền được bảo lưu.</p>
+            <p className="text-white text-sm text-center font-cormorant-garamond">© 2024 LumiMind Haven. Tất cả quyền được bảo lưu.</p>
             <div className="flex space-x-6 mt-4 md:mt-0 justify-center">
               <Link href="#" className="text-white hover:text-[#3365b5]">
                 <span className="sr-only">Facebook</span>
