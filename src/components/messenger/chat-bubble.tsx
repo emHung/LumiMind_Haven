@@ -48,9 +48,9 @@ const ChatBubble = ({ me, message, previousMessage }: ChatBubbleProps) => {
 		return (
 			<>
 				<DateIndicator message={message} previousMessage={previousMessage} />
-				<div className='flex gap-1 w-2/3'>
+				<div className='flex gap-1 w-full xs:w-2/3'>
 					<ChatBubbleAvatar isGroup={isGroup} isMember={isMember} message={message} fromAI={fromAI} />
-					<div className={`flex flex-col z-20 max-w-fit px-2 pt-1 rounded-md shadow-md relative ${bgClass}`}>
+					<div className={`flex flex-col z-20 max-w-[calc(100%-40px)] xs:max-w-fit px-1.5 xs:px-2 pt-1 rounded-md shadow-md relative ${bgClass}`}>
 						{!fromAI && <OtherMessageIndicator />}
 						{fromAI && <Bot size={16} className='absolute bottom-[2px] left-2' />}
 						{<ChatAvatarActions message={message} me={me} />}
@@ -66,9 +66,8 @@ const ChatBubble = ({ me, message, previousMessage }: ChatBubbleProps) => {
 	return (
 		<>
 			<DateIndicator message={message} previousMessage={previousMessage} />
-
-			<div className='flex gap-1 w-2/3 ml-auto'>
-				<div className={`flex  z-20 max-w-fit px-2 pt-1 rounded-md shadow-md ml-auto relative ${bgClass}`}>
+			<div className='flex gap-1 w-full xs:w-2/3 ml-auto'>
+				<div className={`flex flex-col z-20 max-w-[calc(100%-20px)] xs:max-w-fit px-1.5 xs:px-2 pt-1 rounded-md shadow-md ml-auto relative ${bgClass}`}>
 					<SelfMessageIndicator />
 					{renderMessageContent()}
 					{open && <ImageDialog src={message.content} open={open} onClose={() => setOpen(false)} />}
@@ -132,7 +131,7 @@ const SelfMessageIndicator = () => (
 );
 
 const TextMessage = ({ message }: { message: IMessage }) => {
-	const isLink = /^(ftp|http|https):\/\/[^ "]+$/.test(message.content); // Check if the content is a URL
+	const isLink = /^(ftp|http|https):\/\/[^ "]+$/.test(message.content);
 
 	return (
 		<div>
@@ -141,12 +140,12 @@ const TextMessage = ({ message }: { message: IMessage }) => {
 					href={message.content}
 					target='_blank'
 					rel='noopener noreferrer'
-					className={`mr-2 text-sm font-light text-blue-400 underline`}
+					className={`mr-1 xs:mr-2 text-xs xs:text-sm font-light text-blue-400 underline break-all`}
 				>
 					{message.content}
 				</a>
 			) : (
-				<p className={`mr-2 text-sm font-light`}>{message.content}</p>
+				<p className={`mr-1 xs:mr-2 text-xs xs:text-sm font-light break-words`}>{message.content}</p>
 			)}
 		</div>
 	);

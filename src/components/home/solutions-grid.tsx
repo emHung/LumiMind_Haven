@@ -52,7 +52,7 @@ export default function VisionMissionSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-cormorant-garamond text-gray-900 mb-4 text-center">
-            Về chúng tôi
+            Về Chúng Tôi
           </h2>
           <p className="text-xl font-cormorant-garamond text-gray-600 mb-16 text-center max-w-3xl mx-auto">
             Cam kết mang đến giải pháp chăm sóc sức khỏe tinh thần toàn diện và chuyên nghiệp

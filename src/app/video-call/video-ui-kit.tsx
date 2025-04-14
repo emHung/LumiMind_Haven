@@ -1,6 +1,8 @@
 import { randomID } from "@/lib/utils";
 import { useClerk } from "@clerk/nextjs";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 export function getUrlParams(url = window.location.href) {
 	let urlStr = url.split("?")[1];
@@ -9,7 +11,9 @@ export function getUrlParams(url = window.location.href) {
 
 export default function VideoUIKit() {
 	const roomID = getUrlParams().get("roomID") || randomID(5);
+	const conversationId = getUrlParams().get("conversationId");
 	const { user } = useClerk();
+	const sendTextMessage = useMutation(api.messages.sendTextMessage);
 
 	let myMeeting = (element: HTMLDivElement) => {
 		const initMeeting = async () => {
@@ -21,18 +25,28 @@ export default function VideoUIKit() {
 			const kitToken = ZegoUIKitPrebuilt.generateKitTokenForProduction(appID, token, roomID, user?.id!, username);
 
 			const zp = ZegoUIKitPrebuilt.create(kitToken);
+			
+			// Construct the personal link
+			const personalLink = window.location.protocol + "//" + window.location.host + window.location.pathname + "?roomID=" + roomID;
+			
+			// Send the link to the conversation if conversationId exists
+			if (conversationId) {
+				try {
+					await sendTextMessage({
+						content: personalLink,
+						conversation: conversationId,
+					});
+				} catch (error) {
+					console.error("Failed to send video call link:", error);
+				}
+			}
+
 			zp.joinRoom({
 				container: element,
 				sharedLinks: [
 					{
 						name: "Personal link",
-						url:
-							window.location.protocol +
-							"//" +
-							window.location.host +
-							window.location.pathname +
-							"?roomID=" +
-							roomID,
+						url: personalLink,
 					},
 				],
 				scenario: {

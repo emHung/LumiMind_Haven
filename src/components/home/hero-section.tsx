@@ -45,7 +45,7 @@ const CountUp: React.FC<CountUpProps> = ({ end, duration, suffix = '' }) => {
 
 const stats = [
   { number: 5000, suffix: '+', label: 'Khách hàng hài lòng' },
-  { number: 50, label: 'Chuyên gia tâm lý' },
+  { number: 20,label: 'Chuyên gia tâm lý' },
   { number: 98, suffix: '%', label: 'Tỷ lệ hài lòng' }
 ];
 

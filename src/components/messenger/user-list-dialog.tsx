@@ -19,7 +19,11 @@ import { api } from "../../../convex/_generated/api";
 import toast from "react-hot-toast";
 import { useConversationStore } from "@/store/chat-store";
 
-const UserListDialog = () => {
+type UserListDialogProps = {
+	children: React.ReactNode;
+};
+
+const UserListDialog = ({ children }: UserListDialogProps) => {
 	const [selectedUsers, setSelectedUsers] = useState<Id<"users">[]>([]);
 	const [groupName, setGroupName] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -102,7 +106,7 @@ const UserListDialog = () => {
 	return (
 		<Dialog>
 			<DialogTrigger>
-				<MessageSquareDiff size={20} />
+				{children}
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>

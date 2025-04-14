@@ -1,83 +1,80 @@
-import { Laugh, Mic, Plus, Send } from "lucide-react";
-import { Input } from "../ui/input";
-import { useState } from "react";
-import { Button } from "../ui/button";
-import { useMutation, useQuery } from "convex/react";
+import { useRef, useState } from "react";
+import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useConversationStore } from "@/store/chat-store";
-import toast from "react-hot-toast";
-import useComponentVisible from "@/hooks/useComponentVisible";
-import EmojiPicker, { Theme } from "emoji-picker-react";
+import { Button } from "@/components/ui/button";
+import { Smile, Send } from "lucide-react";
 import MediaDropdown from "./media-dropdown";
 
 const MessageInput = () => {
-	const [msgText, setMsgText] = useState("");
 	const { selectedConversation } = useConversationStore();
-	const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+	const sendMessage = useMutation(api.messages.sendTextMessage);
+	const [message, setMessage] = useState("");
+	const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-	const me = useQuery(api.users.getMe);
-	const sendTextMsg = useMutation(api.messages.sendTextMessage);
+	const handleSendMessage = () => {
+		if (!message.trim() || !selectedConversation) return;
 
-	const handleSendTextMsg = async (e: React.FormEvent) => {
-		e.preventDefault();
-		try {
-			await sendTextMsg({ content: msgText, conversation: selectedConversation!._id });
-			setMsgText("");
-		} catch (err: any) {
-			toast.error(err.message);
-			console.error(err);
+		sendMessage({
+			content: message,
+			conversation: selectedConversation._id,
+		});
+
+		setMessage("");
+		if (textareaRef.current) {
+			textareaRef.current.style.height = "auto";
+		}
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+		if (e.key === "Enter" && !e.shiftKey) {
+			e.preventDefault();
+			handleSendMessage();
+		}
+	};
+
+	const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setMessage(e.target.value);
+		if (textareaRef.current) {
+			textareaRef.current.style.height = "auto";
+			textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
 		}
 	};
 
 	return (
-		<div className='bg-gray-primary p-2 flex gap-4 items-center'>
-			<div className='relative flex gap-2 ml-2'>
-				{/* EMOJI PICKER WILL GO HERE */}
-				<div ref={ref} onClick={() => setIsComponentVisible(true)}>
-					{isComponentVisible && (
-						<EmojiPicker
-							theme={Theme.DARK}
-							onEmojiClick={(emojiObject) => {
-								setMsgText((prev) => prev + emojiObject.emoji);
-							}}
-							style={{ position: "absolute", bottom: "1.5rem", left: "1rem", zIndex: 50 }}
-						/>
-					)}
-					<Laugh className='text-gray-600 dark:text-gray-400' />
+		<div className="sticky bottom-0 bg-gray-primary p-2 md:p-4">
+			<div className="flex items-end gap-2 md:gap-4">
+				<div className="flex gap-1 md:gap-2">
+					<Button variant="ghost" size="icon" className="hidden md:flex">
+						<Smile className="w-5 h-5" />
+					</Button>
+					<MediaDropdown />
 				</div>
-				<MediaDropdown />
-			</div>
-			<form onSubmit={handleSendTextMsg} className='w-full flex gap-3'>
-				<div className='flex-1'>
-					<Input
-						type='text'
-						placeholder='Type a message'
-						className='py-2 text-sm w-full rounded-lg shadow-sm bg-gray-tertiary focus-visible:ring-transparent'
-						value={msgText}
-						onChange={(e) => setMsgText(e.target.value)}
+
+				<div className="flex-1 relative">
+					<textarea
+						ref={textareaRef}
+						value={message}
+						onChange={handleTextareaChange}
+						onKeyDown={handleKeyDown}
+						placeholder="Type a message"
+						className="w-full resize-none rounded-lg bg-background px-3 py-2 text-sm focus:outline-none max-h-32"
+						rows={1}
 					/>
 				</div>
-				<div className='mr-4 flex items-center gap-3'>
-					{msgText.length > 0 ? (
-						<Button
-							type='submit'
-							size={"sm"}
-							className='bg-transparent text-foreground hover:bg-transparent'
-						>
-							<Send />
-						</Button>
-					) : (
-						<Button
-							type='submit'
-							size={"sm"}
-							className='bg-transparent text-foreground hover:bg-transparent'
-						>
-							<Mic />
-						</Button>
-					)}
-				</div>
-			</form>
+
+				<Button
+					variant="ghost"
+					size="icon"
+					className="h-10 w-10"
+					onClick={handleSendMessage}
+					disabled={!message.trim() || !selectedConversation}
+				>
+					<Send className="w-5 h-5" />
+				</Button>
+			</div>
 		</div>
 	);
 };
+
 export default MessageInput;
